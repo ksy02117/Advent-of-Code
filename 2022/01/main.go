@@ -10,15 +10,69 @@ import (
 )
 
 func main() {
-	file, err := os.Open("input.txt")
-	if err != nil {
-		panic(err)
-	}
-	defer func() {
-		if err := file.Close(); err != nil {
-			panic(err)
+	var max [3]int
+	ch := make(chan int, 1)
+
+	go getCal(ch)
+
+	for v := range ch {
+		if v >= max[0] {
+			max[2], max[1], max[0] = max[1], max[0], v
+			continue
 		}
-	}()
+
+		if v >= max[1] {
+			max[2], max[1] = max[1], v
+			continue
+		}
+
+		if v >= max[2] {
+			max[2] = v
+			continue
+		}
+	}
+
+	sum := 0
+	for _, v := range max {
+		sum += v
+	}
+	fmt.Println(max)
+	fmt.Println(sum)
+}
+
+func getCal(ch chan int) {
+	file, _ := os.Open("input.txt")
+	defer file.Close()
+	r := bufio.NewReader(file)
+	sum := 0
+
+	for {
+		line, err := r.ReadString('\n')
+		if err != nil && err == io.EOF {
+			fmt.Println("end of file reached")
+			close(ch)
+			return
+		}
+		line = strings.TrimSpace(line)
+
+		if line == "" {
+			fmt.Println(sum)
+			ch <- sum
+			sum = 0
+		} else {
+			str, err := strconv.Atoi(line)
+			if err != nil {
+				panic(err)
+			}
+			sum += str
+		}
+	}
+}
+
+/*
+func sol1() {
+	file, _ := os.Open("input.txt")
+	defer file.Close()
 
 	r := bufio.NewReader(file)
 	var max [3]int
@@ -31,7 +85,6 @@ func main() {
 			break
 		}
 		line = strings.TrimSpace(line)
-		// fmt.Println("[" + line + "]")
 
 		if line == "" {
 			if sum < max[2] {
@@ -70,3 +123,4 @@ func main() {
 	fmt.Println(max)
 	fmt.Println(sum)
 }
+*/

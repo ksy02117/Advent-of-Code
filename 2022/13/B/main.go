@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"sort"
 )
 
 type Element struct {
@@ -91,22 +92,39 @@ func main() {
 	defer file.Close()
 	sc := bufio.NewScanner(file)
 
-	index, sum, i := 1, 0, 1
+	elements := make([]Element, 0)
+	i := 1
+	elements = append(elements, NewElement("[[2]]", &i))
+	i = 1
+	elements = append(elements, NewElement("[[6]]", &i))
 	for sc.Scan() {
-		i = 1
-		left := NewElement(sc.Text(), &i)
-
-		sc.Scan()
-		i = 1
-		right := NewElement(sc.Text(), &i)
-
-		sc.Scan()
-
-		if Compare(&left, &right) == 1 {
-			sum += index
+		line := sc.Text()
+		if line == "" {
+			continue
 		}
-		index++
+
+		i = 1
+		elements = append(elements, NewElement(line, &i))
 	}
 
-	fmt.Println(sum)
+	sort.SliceStable(elements, func(i, j int) bool {
+		if Compare(&elements[i], &elements[j]) == 1 {
+			return true
+		} else {
+			return false
+		}
+	})
+
+	answer := 1
+	for i := range elements {
+		line := elements[i].String()
+		if line == "[[2]]" {
+			answer *= i + 1
+		}
+		if line == "[[6]]" {
+			answer *= i + 1
+		}
+	}
+
+	fmt.Println(answer)
 }

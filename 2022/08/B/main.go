@@ -28,6 +28,9 @@ func (s *stack) Process(value byte, position int) int {
 	return position - s.elements[len(s.elements)-2].position
 }
 
+// Trees between two tall trees are irrelevant for any trees outside the two tall trees
+// thus you only need to know list of the trees in descending order and their positions
+// for a new tree it will release all trees shorter from the stack and calculate distance to the next tall tree
 func main() {
 	file, _ := os.Open("../input.txt")
 	defer file.Close()

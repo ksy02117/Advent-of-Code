@@ -9,6 +9,8 @@ import (
 	"github.com/ksy02117/Advent-of-Code/2022/07/tree"
 )
 
+// builds out the folder structure and calculate everything after building folder structure
+// since i am not sure if the input revisits folders multiple times
 func main() {
 	file, _ := os.Open("../input.txt")
 	defer file.Close()

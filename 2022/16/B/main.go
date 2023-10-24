@@ -83,6 +83,7 @@ func main() {
 		}
 	}
 
+	// build connection matrix
 	for i := 0; i < len(valves); {
 		if valves[i].ID != "AA" && valves[i].Flow == 0 {
 			valves = append(valves[:i], valves[i+1:]...)
@@ -95,6 +96,7 @@ func main() {
 		}
 	}
 
+	// remove irrelevant valves
 	valveIdx = make(map[string]int)
 	for i := range valves {
 		valveIdx[valves[i].ID] = i
@@ -116,6 +118,8 @@ func main() {
 	fmt.Println(max)
 }
 
+// keep track of two separate timer and path
+// only advance one that has more time
 func getAnswer(pathA, pathB []int, minutesA, minutesB, currentMax int) {
 	if minutesA <= 0 && minutesB <= 0 {
 		if currentMax > max {

@@ -15,6 +15,8 @@ type coord struct {
 	x, y int
 }
 
+// when head moves up and if tail is not touching, then tail only can go to one spot
+// same logic applies to other directions
 func moveUp() {
 	head.y++
 	if head.y-tail.y >= 2 {

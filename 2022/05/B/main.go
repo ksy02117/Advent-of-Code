@@ -8,6 +8,7 @@ import (
 	"github.com/ksy02117/Advent-of-Code/2022/05/stack"
 )
 
+// use two stacks to FIFO the movement
 func main() {
 	file, _ := os.Open("../input.txt")
 	defer file.Close()

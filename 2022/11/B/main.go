@@ -54,6 +54,7 @@ func (m *Monkey) Operate() {
 
 var (
 	monkeys []Monkey
+	// by taking remainder of multiples of all test, we guarantee that output is the same for all test
 	divider int = 1
 )
 
@@ -96,7 +97,7 @@ func main() {
 		line = sc.Text()
 		fmt.Sscanf(line, "    If true: throw to monkey %d", &monkey.trueTo)
 
-		// Get True Monkey
+		// Get False Monkey
 		sc.Scan()
 		line = sc.Text()
 		fmt.Sscanf(line, "    If false: throw to monkey %d", &monkey.falseTo)

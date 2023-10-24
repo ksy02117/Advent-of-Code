@@ -16,6 +16,7 @@ var (
 	ci   instruction = instruction{0, 0}
 )
 
+// loops cycle
 func main() {
 	file, _ := os.Open("../input.txt")
 	defer file.Close()

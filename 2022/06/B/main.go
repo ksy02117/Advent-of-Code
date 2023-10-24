@@ -20,6 +20,7 @@ func main() {
 
 	for e = range line {
 		for i := s; i < e; i++ {
+			// if repeat happens we know the packet does not form until after the first value
 			if line[i] == line[e] {
 				fmt.Printf("%v(%c) : %v(%c)\n", i, line[i], e, line[e])
 				s = i + 1

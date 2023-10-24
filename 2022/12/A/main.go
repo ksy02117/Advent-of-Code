@@ -30,6 +30,7 @@ var (
 	que  Queue
 )
 
+// use breath first search to find most optimal path
 func main() {
 	file, _ := os.Open("../input.txt")
 	defer file.Close()

@@ -61,6 +61,7 @@ func main() {
 		idx++
 	}
 
+	// builds out connection matrix for all node edges (both direct and indirect)
 	for from := range valves {
 		connection = append(connection, make([]int, len(valves)))
 		routes := make([]string, 0)
@@ -83,6 +84,7 @@ func main() {
 		}
 	}
 
+	// remove irrelevant node (nodes with no flow)
 	for i := 0; i < len(valves); {
 		if valves[i].ID != "AA" && valves[i].Flow == 0 {
 			valves = append(valves[:i], valves[i+1:]...)
@@ -114,6 +116,7 @@ func main() {
 	fmt.Println(max)
 }
 
+// dfs to answer
 func getAnswer(path []int, minutes, currentMax int) {
 	if minutes <= 0 {
 		if currentMax > max {

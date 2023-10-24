@@ -22,6 +22,7 @@ func main() {
 	fmt.Println(sum)
 }
 
+// the point function for A
 func calPoint1(line string) int {
 	// A, X Rock
 	// B, Y Paper
@@ -49,6 +50,7 @@ func calPoint1(line string) int {
 	panic("no case")
 }
 
+// the point function for B
 func calPoint2(line string) int {
 	// A Rock
 	// B Paper

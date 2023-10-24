@@ -14,8 +14,9 @@ type Coord struct {
 var (
 	grid map[Coord]byte = make(map[Coord]byte)
 
-	minX, maxX        int = 500, 500
-	maxY              int = 0
+	minX, maxX int = 500, 500
+	maxY       int = 0
+	// it takes too long time too completely fill out the whole triangle, take the height of what would be right and left triangle to calculate them instead of counting them
 	minLeft, minRight int
 )
 

@@ -57,10 +57,12 @@ func main() {
 		noBeaconRanges = append(noBeaconRanges, Range{sensor.x - dx, sensor.x + dx})
 	}
 
+	// sort to make combining ranges way easier
 	sort.Slice(noBeaconRanges, func(i, j int) bool {
 		return noBeaconRanges[i].min < noBeaconRanges[j].min
 	})
 
+	// combines beacon ranges
 	for i := 0; i < len(noBeaconRanges)-1; i++ {
 		for j := i + 1; j < len(noBeaconRanges); {
 			// if overlaps

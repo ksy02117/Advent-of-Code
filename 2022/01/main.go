@@ -11,8 +11,10 @@ import (
 
 func main() {
 	var max [3]int
+	// make a buffered channel to avoid deadlock
 	ch := make(chan int, 1)
 
+	// read input async
 	go getCal(ch)
 
 	for v := range ch {

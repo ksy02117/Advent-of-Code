@@ -71,10 +71,12 @@ func main() {
 			noBeaconRanges = append(noBeaconRanges, Range{sensors[i].x - dx, sensors[i].x + dx})
 		}
 
+		// sort ranges to make combining process easier
 		sort.Slice(noBeaconRanges, func(i, j int) bool {
 			return noBeaconRanges[i].min < noBeaconRanges[j].min
 		})
 
+		// combines ranges
 		for i := 0; i < len(noBeaconRanges)-1; i++ {
 			for j := i + 1; j < len(noBeaconRanges); {
 				// if overlaps
@@ -89,6 +91,7 @@ func main() {
 			}
 		}
 
+		// special cases to test if they contain empty spot
 		if len(noBeaconRanges) >= 2 {
 			fmt.Println(y, noBeaconRanges)
 			for i := 0; i < len(noBeaconRanges)-1; i++ {

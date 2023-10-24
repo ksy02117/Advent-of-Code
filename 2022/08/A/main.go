@@ -6,6 +6,9 @@ import (
 	"os"
 )
 
+// the tree has view if it is higher than the highest tree in the direction
+// this means that by keeping track of highest tree, you can figure out if tree is visible from top for all column as you go down
+// this applies to all other direction
 func main() {
 	file, _ := os.Open("../input.txt")
 	defer file.Close()

@@ -17,6 +17,7 @@ func main() {
 	for sc.Scan() {
 		line := sc.Text()
 
+		// sort them so your can use two way comparison for dup checking
 		item1 := translate(line[:len(line)/2])
 		item2 := translate(line[len(line)/2:])
 		slices.Sort(item1)

@@ -12,6 +12,7 @@ type Element struct {
 	list     []Element
 }
 
+// this is called to make each List Element
 func NewElement(input string, i *int) Element {
 	out := Element{false, 0, make([]Element, 0)}
 
@@ -55,6 +56,7 @@ func Compare(left, right *Element) int {
 		}
 	}
 
+	// If one side is number and other is list, turn number into list and call Compare
 	if left.isNumber && !right.isNumber {
 		return Compare(&Element{false, 0, []Element{{true, left.number, nil}}}, right)
 	}

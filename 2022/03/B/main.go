@@ -15,6 +15,7 @@ func main() {
 
 	sum := 0
 	for sc.Scan() {
+		// sort them so your can use two way comparison for dup checking
 		item1 := translate(sc.Text())
 		slices.Sort(item1)
 
@@ -26,6 +27,7 @@ func main() {
 		item3 := translate(sc.Text())
 		slices.Sort(item3)
 
+		// only advance smallest array
 		for i, j, k := 0, 0, 0; i < len(item1) && j < len(item2) && k < len(item3); {
 			if item1[i] > item2[j] {
 				j++

@@ -18,6 +18,7 @@ var (
 	maxY       int = 0
 )
 
+// sets boundary since if sand ever reaches out of bound on left, right, or bottom, it will fall indefinitely
 func setMinMax(c Coord) {
 	if c.x < minX {
 		minX = c.x

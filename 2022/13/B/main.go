@@ -107,6 +107,7 @@ func main() {
 		elements = append(elements, NewElement(line, &i))
 	}
 
+	// since we already have compare function, we can facade it to make less function for sort
 	sort.SliceStable(elements, func(i, j int) bool {
 		if Compare(&elements[i], &elements[j]) == 1 {
 			return true

@@ -94,7 +94,7 @@ func main() {
 		line = sc.Text()
 		fmt.Sscanf(line, "    If true: throw to monkey %d", &monkey.trueTo)
 
-		// Get True Monkey
+		// Get False Monkey
 		sc.Scan()
 		line = sc.Text()
 		fmt.Sscanf(line, "    If false: throw to monkey %d", &monkey.falseTo)

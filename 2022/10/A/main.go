@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+// loops text.
 func main() {
 	file, _ := os.Open("../input.txt")
 	defer file.Close()
@@ -26,6 +27,7 @@ func main() {
 			continue
 		}
 
+		// since addx takes two cycle we need to check for 20 and 21 case
 		cycle += 2
 		if cycle%40 == 20 || cycle%40 == 21 {
 			fmt.Printf("cycle: %v, x: %v\n", (cycle/40*40 + 20), x)

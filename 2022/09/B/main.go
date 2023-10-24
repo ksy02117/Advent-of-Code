@@ -15,6 +15,8 @@ type coord struct {
 	x, y int
 }
 
+// by removing the case where next node is touching previous node
+// any difference in x and y will move tail in that direction
 func (tail *coord) follow(head coord) {
 	vec := coord{head.x - tail.x, head.y - tail.y}
 

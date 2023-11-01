@@ -6,15 +6,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",
+            "args": "${command:SpecifyProgramArgs}",
             "projectName": "AOC 2021 Java_557b2f38"
         }
     ]

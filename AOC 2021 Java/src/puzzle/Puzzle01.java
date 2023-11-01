@@ -1,40 +1,47 @@
 package puzzle;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-
-import util.BufferedReaderGetter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Puzzle01 extends Puzzle {
-    private String file_path;
-    private BufferedReader reader;
 
-    public Puzzle01(String file_path) {
-        this.file_path = file_path;
-        reader = BufferedReaderGetter.getReader(file_path);
-    }
+    public List<Integer> processInput(String file_path) {
+        List<Integer> out = new ArrayList<Integer>();
 
-    public String solveA() {
-        for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-            System.out.print(line);
-        }
-
-        return "";
-    }
-
-    public String solveB() {
-        try (FileReader reader = new FileReader(file_path);) {
-            System.out.println("Hello Day 01B");
-
+        try (BufferedReader reader = new BufferedReader(new FileReader(file_path));) {
+            for (String line = reader.readLine(); line != null; line = reader.readLine())
+                out.add(Integer.parseInt(line));
         } catch (IOException e) {
             e.printStackTrace();
+            System.exit(-1);
         }
 
-        return "";
+        return out;
+    }
+
+    public String solveA(String file_path) {
+        List<Integer> depths = processInput(file_path);
+
+        int cnt = 0;
+        for (int i = 0; i < depths.size() - 1; i++)
+            if (depths.get(i + 1) > depths.get(i))
+                cnt++;
+
+        return Integer.toString(cnt);
+    }
+
+    public String solveB(String file_path) {
+        List<Integer> depths = processInput(file_path);
+
+        int cnt = 0;
+        for (int i = 0; i < depths.size() - 3; i++)
+            if (depths.get(i + 3) > depths.get(i))
+                cnt++;
+
+        return Integer.toString(cnt);
     }
 
 }

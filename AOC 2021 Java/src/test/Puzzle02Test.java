@@ -6,22 +6,22 @@ import org.junit.Test;
 
 import puzzle.*;
 
-public class Puzzle01Test {
-    private final String file_path = "resources/01/ex.txt";
+public class Puzzle02Test {
+    private final String file_path = "resources/02/ex.txt";
 
     @Test
     public void testA() {
-        Puzzle puzzle = new Puzzle01();
+        Puzzle02 puzzle = new Puzzle02();
         String result = puzzle.solveA(file_path);
 
-        assertEquals("7", result);
+        assertEquals("150", result);
     }
 
     @Test
     public void testB() {
-        Puzzle01 puzzle = new Puzzle01();
+        Puzzle02 puzzle = new Puzzle02();
         String result = puzzle.solveB(file_path);
 
-        assertEquals("5", result);
+        assertEquals("900", result);
     }
 }

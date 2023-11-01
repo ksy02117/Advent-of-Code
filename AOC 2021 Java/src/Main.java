@@ -1,5 +1,10 @@
+import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
 import java.util.List;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import puzzle.*;
 
@@ -19,5 +24,31 @@ public class Main {
             result = puzzles.get(puzzleID - 1).solveB(file_path);
 
         System.out.println(result);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "01, 7",
+            "02, 150"
+    })
+    void testA(String arg, String expected) {
+        int puzzleID = Integer.parseInt(arg);
+        String file_path = "resources/" + arg + "/ex.txt";
+        String result = puzzles.get(puzzleID - 1).solveA(file_path);
+
+        assertEquals(expected, result);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "01, 5",
+            "02, 900"
+    })
+    void testB(String arg, String expected) {
+        int puzzleID = Integer.parseInt(arg);
+        String file_path = "resources/" + arg + "/ex.txt";
+        String result = puzzles.get(puzzleID - 1).solveB(file_path);
+
+        assertEquals(expected, result);
     }
 }

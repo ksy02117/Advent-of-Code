@@ -11,7 +11,8 @@ import puzzle.*;
 public class Main {
     private static List<Puzzle> puzzles = Arrays.asList(
             new Puzzle01(),
-            new Puzzle02());
+            new Puzzle02(),
+            new Puzzle03());
 
     public static void main(String... args) {
         int puzzleID = Integer.parseInt(args[0]);
@@ -29,7 +30,8 @@ public class Main {
     @ParameterizedTest
     @CsvSource({
             "01, 7",
-            "02, 150"
+            "02, 150",
+            "03, 198"
     })
     void testA(String arg, String expected) {
         int puzzleID = Integer.parseInt(arg);
@@ -42,7 +44,8 @@ public class Main {
     @ParameterizedTest
     @CsvSource({
             "01, 5",
-            "02, 900"
+            "02, 900",
+            "03, 230"
     })
     void testB(String arg, String expected) {
         int puzzleID = Integer.parseInt(arg);

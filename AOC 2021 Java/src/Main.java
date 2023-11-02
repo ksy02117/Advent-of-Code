@@ -12,7 +12,8 @@ public class Main {
     private static List<Puzzle> puzzles = Arrays.asList(
             new Puzzle01(),
             new Puzzle02(),
-            new Puzzle03());
+            new Puzzle03(),
+            new Puzzle04());
 
     public static void main(String... args) {
         int puzzleID = Integer.parseInt(args[0]);
@@ -31,7 +32,8 @@ public class Main {
     @CsvSource({
             "01, 7",
             "02, 150",
-            "03, 198"
+            "03, 198",
+            "04, 4512"
     })
     void testA(String arg, String expected) {
         int puzzleID = Integer.parseInt(arg);
@@ -45,7 +47,8 @@ public class Main {
     @CsvSource({
             "01, 5",
             "02, 900",
-            "03, 230"
+            "03, 230",
+            "04, 1924"
     })
     void testB(String arg, String expected) {
         int puzzleID = Integer.parseInt(arg);

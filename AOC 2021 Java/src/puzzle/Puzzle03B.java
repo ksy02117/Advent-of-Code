@@ -1,12 +1,13 @@
 package puzzle;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Puzzle03 extends Puzzle {
+import org.junit.Test;
+
+public class Puzzle03B extends Puzzle {
 
     private class Report {
         List<Integer> bits;
@@ -23,61 +24,15 @@ public class Puzzle03 extends Puzzle {
                 }
             }
         }
-
-        public Report(int initialSize) {
-            bits = new ArrayList<>(initialSize);
-
-            for (int i = 0; i < initialSize; i++)
-                bits.add(0);
-        }
-
-        private void Add(Report report) {
-            for (int i = 0; i < bits.size(); i++) {
-                bits.set(i, bits.get(i) + report.bits.get(i));
-            }
-        }
     }
 
-    public List<Report> processInput(String file_path) {
-        List<Report> out = new ArrayList<>();
+    public String solve(String file_path) {
+        List<String> inputLines = processInput(file_path);
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(file_path));) {
-            for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-                out.add(new Report(line));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
+        List<Report> input1 = new ArrayList<>();
+        for (String inputLine : inputLines) {
+            input1.add(new Report(inputLine));
         }
-
-        return out;
-    }
-
-    public String solveA(String file_path) {
-        List<Report> input = processInput(file_path);
-
-        Report counts = new Report(input.get(0).bits.size());
-
-        for (Report report : input) {
-            counts.Add(report);
-        }
-
-        int v1 = 0, v2 = 0;
-        for (Integer count : counts.bits) {
-            v1 *= 2;
-            v2 *= 2;
-            if (count > input.size() / 2) {
-                v1++;
-            } else {
-                v2++;
-            }
-        }
-
-        return Integer.toString(v1 * v2);
-    }
-
-    public String solveB(String file_path) {
-        List<Report> input1 = processInput(file_path);
         int reportSize = input1.get(0).bits.size();
 
         int cnt;
@@ -112,7 +67,10 @@ public class Puzzle03 extends Puzzle {
             v1 += input1.get(0).bits.get(i);
         }
 
-        List<Report> input2 = processInput(file_path);
+        List<Report> input2 = new ArrayList<>();
+        for (String inputLine : inputLines) {
+            input2.add(new Report(inputLine));
+        }
 
         for (int i = 0; i < reportSize; i++) {
             // Counting Stars
@@ -151,4 +109,11 @@ public class Puzzle03 extends Puzzle {
         return Integer.toString(v1 * v2);
     }
 
+    @Test
+    public void test() {
+        String file_path = "resources/03/ex.txt";
+        String result = solve(file_path);
+
+        assertEquals("230", result);
+    }
 }

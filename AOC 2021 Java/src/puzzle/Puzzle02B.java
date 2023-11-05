@@ -1,13 +1,14 @@
 package puzzle;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Puzzle02 extends Puzzle {
+import org.junit.Test;
+
+public class Puzzle02B extends Puzzle {
 
     private enum Direction {
         Forward,
@@ -35,43 +36,13 @@ public class Puzzle02 extends Puzzle {
         }
     }
 
-    public List<Command> processInput(String file_path) {
-        List<Command> out = new ArrayList<>();
+    public String solve(String file_path) {
+        List<String> inputLines = processInput(file_path);
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(file_path));) {
-            for (String line = reader.readLine(); line != null; line = reader.readLine())
-                out.add(new Command(line));
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
+        List<Command> commands = new ArrayList<>();
+        for (String inputLine : inputLines) {
+            commands.add(new Command(inputLine));
         }
-
-        return out;
-    }
-
-    public String solveA(String file_path) {
-        List<Command> commands = processInput(file_path);
-
-        int length = 0, depth = 0;
-        for (Command command : commands) {
-            switch (command.direction) {
-                case Forward:
-                    length += command.amount;
-                    break;
-                case Down:
-                    depth += command.amount;
-                    break;
-                case Up:
-                    depth -= command.amount;
-                    break;
-            }
-        }
-
-        return Integer.toString(length * depth);
-    }
-
-    public String solveB(String file_path) {
-        List<Command> commands = processInput(file_path);
 
         int length = 0, depth = 0, aim = 0;
         for (Command command : commands) {
@@ -92,4 +63,11 @@ public class Puzzle02 extends Puzzle {
         return Integer.toString(length * depth);
     }
 
+    @Test
+    public void test() {
+        String file_path = "resources/02/ex.txt";
+        String result = solve(file_path);
+
+        assertEquals("900", result);
+    }
 }

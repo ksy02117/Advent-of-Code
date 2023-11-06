@@ -12,7 +12,7 @@ public class Puzzle06B extends Puzzle {
 
     public String solve(String file_path) {
         List<String> inputLines = processInput(file_path);
-        Map<Integer, Long> fishes = new HashMap();
+        Map<Integer, Long> fishes = new HashMap<>();
 
         String[] lines = inputLines.get(0).split(",");
         for (int i = 0; i < lines.length; i++) {

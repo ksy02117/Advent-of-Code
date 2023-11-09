@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "formulahendry.dotnet",
+        "ms-dotnettools.vscode-dotnet-runtime",
+        "fudge.auto-using",
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.csdevkit",
+        "kreativ-software.csharpextensions",
+        "adrianwilczynski.namespace",
+        "ms-dotnettools.vscodeintellicode-csharp",
+    ]
+}

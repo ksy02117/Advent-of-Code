@@ -18,7 +18,8 @@ public class Main {
             new Puzzle11A(), new Puzzle11B(),
             new Puzzle12A(), new Puzzle12B(),
             new Puzzle13A(), new Puzzle13B(),
-            new Puzzle14A(), new Puzzle14B());
+            new Puzzle14A(), new Puzzle14B(),
+            new Puzzle15A(), new Puzzle15B());
 
     public static void main(String... args) {
         int puzzleID = Integer.parseInt(args[0]);

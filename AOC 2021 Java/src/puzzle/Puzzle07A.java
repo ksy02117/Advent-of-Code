@@ -36,7 +36,6 @@ public class Puzzle07A extends Puzzle {
         return Integer.toString(sum);
     }
 
-    @Override
     @Test
     public void test() {
         String file_path = "resources/07/ex.txt";

@@ -23,6 +23,4 @@ public abstract class Puzzle {
     }
 
     public abstract String solve(String file_path);
-
-    public abstract void test();
 }

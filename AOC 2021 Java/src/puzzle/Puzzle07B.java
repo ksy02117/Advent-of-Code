@@ -44,7 +44,6 @@ public class Puzzle07B extends Puzzle {
         return Integer.toString(answer);
     }
 
-    @Override
     @Test
     public void test() {
         String file_path = "resources/07/ex.txt";

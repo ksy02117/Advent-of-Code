@@ -64,8 +64,6 @@ public class Puzzle16B extends Puzzle {
                         subPackets.add(parse(packet));
                     break;
             }
-            Long a = 1l;
-
             long out;
             switch (id) {
                 case 0: // sum

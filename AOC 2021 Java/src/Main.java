@@ -20,11 +20,15 @@ public class Main {
             new Puzzle13A(), new Puzzle13B(),
             new Puzzle14A(), new Puzzle14B(),
             new Puzzle15A(), new Puzzle15B(),
-            new Puzzle16A(), new Puzzle16B());
+            new Puzzle16A(), new Puzzle16B(),
+            new Puzzle17A(), new Puzzle17B(),
+            new Puzzle18A(), new Puzzle18B(),
+            new Puzzle19A(), new Puzzle19B(),
+            new Puzzle20A());
 
     public static void main(String... args) {
         int puzzleID = Integer.parseInt(args[0]);
-        String file_path = "resources/" + args[0] + "/input.txt";
+        String file_path = "resources/" + args[0] + "/ex.txt";
 
         int IDX = (puzzleID - 1) * 2;
         if (args[1].equals("B"))

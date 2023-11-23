@@ -8,7 +8,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
-public class Puzzle20A extends Puzzle {
+public class Puzzle20B extends Puzzle {
     private String enhancer;
     private boolean invert;
 
@@ -59,7 +59,7 @@ public class Puzzle20A extends Puzzle {
             }
         }
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 50; i++) {
             // Get Board Boundary
             int minX = Integer.MAX_VALUE, minY = Integer.MAX_VALUE;
             int maxX = Integer.MIN_VALUE, maxY = Integer.MIN_VALUE;
@@ -123,16 +123,16 @@ public class Puzzle20A extends Puzzle {
             }
 
             // Print map
-            System.out.println("\n-- Map " + (i + 1) + " --");
-            for (int y = minY; y <= maxY; y++) {
-                for (int x = minX; x <= maxX; x++) {
-                    if (litCoordinates.contains(new Coordinate(x, y)))
-                        System.out.print("#");
-                    else
-                        System.out.print(".");
-                }
-                System.out.println();
-            }
+            // System.out.println("\n-- Map " + (i + 1) + " --");
+            // for (int y = minY; y <= maxY; y++) {
+            // for (int x = minX; x <= maxX; x++) {
+            // if (litCoordinates.contains(new Coordinate(x, y)))
+            // System.out.print("#");
+            // else
+            // System.out.print(".");
+            // }
+            // System.out.println();
+            // }
         }
 
         return Integer.toString(litCoordinates.size());
@@ -143,6 +143,6 @@ public class Puzzle20A extends Puzzle {
         String file_path = "resources/20/ex.txt";
         String result = solve(file_path);
 
-        assertEquals("35", result);
+        assertEquals("3351", result);
     }
 }

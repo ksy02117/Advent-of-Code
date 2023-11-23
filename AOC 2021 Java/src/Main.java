@@ -24,11 +24,11 @@ public class Main {
             new Puzzle17A(), new Puzzle17B(),
             new Puzzle18A(), new Puzzle18B(),
             new Puzzle19A(), new Puzzle19B(),
-            new Puzzle20A());
+            new Puzzle20A(), new Puzzle20B());
 
     public static void main(String... args) {
         int puzzleID = Integer.parseInt(args[0]);
-        String file_path = "resources/" + args[0] + "/ex.txt";
+        String file_path = "resources/" + args[0] + "/input.txt";
 
         int IDX = (puzzleID - 1) * 2;
         if (args[1].equals("B"))
